@@ -23,6 +23,7 @@ def featureExtract1():
     data.drop(data.index[error_index], inplace=True)
 
     df = pd.get_dummies(data, columns=['season', 'yr', 'mnth', 'holiday', 'weekday', 'workingday', 'weathersit'])
+    df.to_csv('processed_day.csv', index=False)
     label = df[['cnt']]
     df.drop(['cnt'], axis=1, inplace=True)
     # print(df, label)
@@ -62,7 +63,7 @@ def featureExtract1():
 #     #  'weathersit_3']
 #     return X_train, X_test, y_train, y_test
 
-def test_Model(*data):
+def try_Model(*data):
     def printScore(s,regr):
         print('------'+s+'------')
         print('Coefficients:%s, intercept %.2f' % (regr.coef_, regr.intercept_))
@@ -86,7 +87,7 @@ def test_Model(*data):
     # error = regr.predict(X_train).reshape(-1,1)-y_train
     # error.abs().to_csv('error2.csv', header = 0)  # 不保存列名
 
-def test_alpha(*data):
+def try_alpha(*data):
     X_train,X_test,y_train,y_test=data
     alphas=[0.01,0.02,0.05,0.1,0.2,0.5,1,2,5,10,20,50,100,200,500,1000]
     scores=[]
@@ -110,5 +111,5 @@ if __name__=='__main__':
     print(X_train.shape,y_train.shape,X_test.shape,y_test.shape)
     # print(X_test, y_test)
 
-    test_Model(X_train,X_test,y_train,y_test) # 调用 test_Ridge
-    # test_alpha(X_train,X_test,y_train,y_test) # 调用 test_Ridge_alpha
+    try_Model(X_train,X_test,y_train,y_test) # 调用 test_Ridge
+    # try_alpha(X_train,X_test,y_train,y_test) # 调用 test_Ridge_alpha

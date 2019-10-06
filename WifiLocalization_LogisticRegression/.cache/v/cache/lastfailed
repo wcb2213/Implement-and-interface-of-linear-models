@@ -1,0 +1,7 @@
+{
+  "sklearn_test_LR.py::test_LogisticRegression": true,
+  "sklearn_test_LR.py::test_LogisticRegression_C": true,
+  "sklearn_test_LR.py::test_LogisticRegression_multinomial": true,
+  "sklearn_test_linearRegression.py::test_Ridge": true,
+  "sklearn_test_linearRegression.py::test_Ridge_alpha": true
+}
